@@ -941,6 +941,9 @@ function clickAppLink(appname){
 
 window.onload = function() {
 	let username = getUserName();
+	
+	console.log("★★★★★");
+
 	if(username == ''){
 		let userList = getUsernames();
 		if(userList.length == 0) return;
