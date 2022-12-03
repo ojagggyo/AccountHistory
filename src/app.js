@@ -780,7 +780,7 @@ let krwtrx;
 let krwbtc;
 let krweth;
 async function aaa(days){
-	globalProperties = await client.api.getDynamicGlobalPropertiesAsync();
+	globalProperties = await client.api.getDynamicGlobalProperties();//★
 	krwsteem = await getPrice('KRW-STEEM');
 	krwsbd = await getPrice('KRW-SBD');
 	krwtrx = await getPrice('KRW-TRX');
