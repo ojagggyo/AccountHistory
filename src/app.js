@@ -820,7 +820,10 @@ async function aaa(days){
 		if(firstValue != -1 && firstValue < limit) {
 			limit = firstValue;
 		}
-		let ret = await client.api.getAccountHistoryAsync(username, firstValue, limit);
+		//let ret = await client.api.getAccountHistoryAsync(username, firstValue, limit);//★
+		let ret = await client.database.call('get_account_history',[username, firstValue, limit]);
+		
+		
 		//console.log(ret);		
 		firstValue = ret[0][0];
     		firstTimestamp = new Date(ret[0][1].timestamp);
