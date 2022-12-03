@@ -67,3 +67,25 @@ progress {
 #resourcecredits::-webkit-progress-value {
   background-color: #5eb85e;
 }
+
+
+/* ---------------------------------------------------------------------------- */
+
+
+.lightgray {
+	color: lightgray;
+}
+.darkgray {
+	color: darkgray;
+}
+//.lightgray:hover {
+//	text-decoration: none;
+//	color: gray;
+//}
+.darkgray:hover {
+	text-decoration: none;
+	color: red;
+}
+td  {
+	padding: 4px;
+}
