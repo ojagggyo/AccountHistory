@@ -244,7 +244,9 @@ async function getReputation(username){
 //27.3217
 async function getAge(username){
 	return new Promise((resolve, reject) => {
-		client.api.getAccounts([username], function(err, response) {//★
+		//client.api.getAccounts([username], function(err, response) {//★
+                client.database.getAccounts([username], function(err, response) {
+			
 			if (err) reject(err);
 			date1 = new Date(response[0].created);
 			date1.setHours(date1.getHours() + 9);
