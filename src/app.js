@@ -104,12 +104,12 @@ break;
 
 // ---------- power ---------- 
 async function getEffectivePower(username){
-	let globalProperties = await steem.api.getDynamicGlobalPropertiesAsync();
+	let globalProperties = await client.api.getDynamicGlobalPropertiesAsync();
 	console.log(globalProperties);
 	let total_vesting_shares = parseFloat(globalProperties.total_vesting_shares.replace(" VESTS", ""));
 	let total_vesting_fund_steem = parseFloat(globalProperties.total_vesting_fund_steem.replace(" STEEM", ""));
 	let k = total_vesting_fund_steem / total_vesting_shares;
-	let accounts = await steem.api.getAccountsAsync([username]);
+	let accounts = await client.api.getAccountsAsync([username]);
 	console.log(accounts);
 	let vesting_shares = parseFloat(accounts[0].vesting_shares.replace(" VESTS", ""));
 	let received_vesting_shares = parseFloat(accounts[0].received_vesting_shares.replace(" VESTS", ""));
@@ -128,14 +128,14 @@ function effectivepower(username,id1, id2, id3){
 	}
 	getEffectivePower(username).then(result => {
 		document.getElementById(id1).text = 
-			steem.formatter.numberWithCommas((result.sp + result.received_sp - result.delegated_sp).toFixed(0)) + " SP" ;
+			client.formatter.numberWithCommas((result.sp + result.received_sp - result.delegated_sp).toFixed(0)) + " SP" ;
 		document.getElementById(id2).text = 
 			'('
-			+ steem.formatter.numberWithCommas((result.sp).toFixed(0))
+			+ client.formatter.numberWithCommas((result.sp).toFixed(0))
 			+ ' + '
-			+ steem.formatter.numberWithCommas((result.received_sp).toFixed(0))
+			+ client.formatter.numberWithCommas((result.received_sp).toFixed(0))
 			+ ' - ' 
-			+ steem.formatter.numberWithCommas((result.delegated_sp).toFixed(0))
+			+ client.formatter.numberWithCommas((result.delegated_sp).toFixed(0))
 			+ ')';
 		if(id3){
 			document.getElementById(id3).max = result.sp + result.received_sp;
@@ -592,7 +592,7 @@ function userlink(){
 // ---------- ----------	
 function getPostingJsonMetadata(username) {
     return new Promise((resolve, reject) => {
-        steem.api.getAccounts([username], function(err, response) {
+        client.api.getAccounts([username], function(err, response) {
 		if (err) reject(err);
 		const posting_json_metadata  = response[0].posting_json_metadata ;
 		resolve(JSON.parse(posting_json_metadata));
