@@ -597,7 +597,8 @@ function userlink(){
 // ---------- ----------	
 function getPostingJsonMetadata(username) {
     return new Promise((resolve, reject) => {
-        client.api.getAccounts([username], function(err, response) {
+        //client.api.getAccounts([username], function(err, response) {//★
+	client.database.getAccounts([username], function(err, response) {
 		if (err) reject(err);
 		const posting_json_metadata  = response[0].posting_json_metadata ;
 		resolve(JSON.parse(posting_json_metadata));
