@@ -477,7 +477,9 @@ function getTransferAmount(record){
 
 
 // ---------- ----------
-function clickBtn(days){
+
+//function clickBtn(days){
+window.clickBtn = async (days) => {
 	
 	let username = document.getElementById("username").value;
 	window.location.hash = '#' + username;
