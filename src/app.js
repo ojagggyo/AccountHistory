@@ -941,8 +941,6 @@ function clickAppLink(appname){
 
 window.onload = function() {
 	let username = getUserName();
-	
-	console.log("★★★★★");
 
 	if(username == ''){
 		let userList = getUsernames();
@@ -950,7 +948,7 @@ window.onload = function() {
 		username = userList.pop();
 	}
 	document.getElementById("username").value = username;
-	(1);
+	clickBtn(1);
 };
 
 
