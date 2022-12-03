@@ -197,7 +197,7 @@ function steemAmountFormat(steem, sbd, sp) {
 function krwAmountFormat(steemAmount, sbdAmount, spAmount, krw_steem, krw_sbd) {
 	if(krw_steem == 0) return "";
 	return ' <a class=gray>(' 
-		+ steem.formatter.numberWithCommas((steemAmount * krw_steem + sbdAmount * krw_sbd + spAmount * krw_steem).toFixed(0)) 
+		+ client.formatter.numberWithCommas((steemAmount * krw_steem + sbdAmount * krw_sbd + spAmount * krw_steem).toFixed(0)) 
 		+ ' won)</a>';
 }
 	
@@ -780,7 +780,7 @@ let krwtrx;
 let krwbtc;
 let krweth;
 async function aaa(days){
-	globalProperties = await steem.api.getDynamicGlobalPropertiesAsync();
+	globalProperties = await client.api.getDynamicGlobalPropertiesAsync();
 	krwsteem = await getPrice('KRW-STEEM');
 	krwsbd = await getPrice('KRW-SBD');
 	krwtrx = await getPrice('KRW-TRX');
@@ -814,7 +814,7 @@ async function aaa(days){
 		if(firstValue != -1 && firstValue < limit) {
 			limit = firstValue;
 		}
-		let ret = await steem.api.getAccountHistoryAsync(username, firstValue, limit);
+		let ret = await client.api.getAccountHistoryAsync(username, firstValue, limit);
 		//console.log(ret);		
 		firstValue = ret[0][0];
     		firstTimestamp = new Date(ret[0][1].timestamp);
