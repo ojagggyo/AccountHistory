@@ -788,6 +788,11 @@ let krwbtc;
 let krweth;
 async function aaa(days){
 	globalProperties = await client.database.getDynamicGlobalProperties();//★
+
+	console.log("★★★★★");
+    console.log(globalProperties);
+
+
 	krwsteem = await getPrice('KRW-STEEM');
 	krwsbd = await getPrice('KRW-SBD');
 	krwtrx = await getPrice('KRW-TRX');
@@ -942,7 +947,7 @@ window.onload = function() {
 		username = userList.pop();
 	}
 	document.getElementById("username").value = username;
-	clickBtn(1);
+	(1);
 };
 
 
