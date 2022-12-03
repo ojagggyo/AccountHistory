@@ -109,7 +109,9 @@ async function getEffectivePower(username){
 	let total_vesting_shares = parseFloat(globalProperties.total_vesting_shares.replace(" VESTS", ""));
 	let total_vesting_fund_steem = parseFloat(globalProperties.total_vesting_fund_steem.replace(" STEEM", ""));
 	let k = total_vesting_fund_steem / total_vesting_shares;
-	let accounts = await client.api.getAccounts([username]);//★
+	//let accounts = await client.api.getAccounts([username]);//★
+	let accounts = await client.database.call('get_accounts', [[username]]);	
+	
 	console.log(accounts);
 	let vesting_shares = parseFloat(accounts[0].vesting_shares.replace(" VESTS", ""));
 	let received_vesting_shares = parseFloat(accounts[0].received_vesting_shares.replace(" VESTS", ""));
