@@ -19,7 +19,7 @@ function donokuraimae(date){
 }
 
 function vestToSteem(vest){
-	return  window.steem.formatter.vestToSteem(
+	return  client.formatter.vestToSteem(
 		vest, 
 		globalProperties.total_vesting_shares, 
 		globalProperties.total_vesting_fund_steem)
