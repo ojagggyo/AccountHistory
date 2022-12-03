@@ -225,7 +225,8 @@ function repLog10(str) {
 
 async function getReputation(username){
 	return new Promise((resolve, reject) => {
-		client.api.getAccounts([username], function(err, response) {
+		//client.api.getAccounts([username], function(err, response) {//★
+	        client.database.getAccounts([username], function(err, response) {
 		    if (err) reject(err);
 		    resolve(repLog10(response[0].reputation));
 		});
