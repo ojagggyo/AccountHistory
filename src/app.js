@@ -1,3 +1,11 @@
+require("regenerator-runtime/runtime");
+const dsteem = require('dsteem');
+let client = new dsteem.Client('https://api.steememory.com');
+
+
+
+
+
 function donokuraimae(date){
 	date1 = new Date(date);
 	date1.setHours(date1.getHours() + 9);
@@ -215,7 +223,7 @@ function repLog10(str) {
 
 async function getReputation(username){
 	return new Promise((resolve, reject) => {
-		steem.api.getAccounts([username], function(err, response) {
+		client.api.getAccounts([username], function(err, response) {
 		    if (err) reject(err);
 		    resolve(repLog10(response[0].reputation));
 		});
@@ -234,7 +242,7 @@ async function getReputation(username){
 //27.3217
 async function getAge(username){
 	return new Promise((resolve, reject) => {
-		steem.api.getAccounts([username], function(err, response) {
+		client.api.getAccounts([username], function(err, response) {
 			if (err) reject(err);
 			date1 = new Date(response[0].created);
 			date1.setHours(date1.getHours() + 9);
@@ -543,8 +551,7 @@ function inputChange(event){
 
 
 
-steem.api.setOptions({url: 'https://api.steemit.com'})
-//steem.api.setOptions({url: 'https://api.steemwow.com'})
+
 
 // ---------- userlink ----------
 function setUsername(username){
