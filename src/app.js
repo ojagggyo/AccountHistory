@@ -104,7 +104,7 @@ break;
 
 // ---------- power ---------- 
 async function getEffectivePower(username){
-	let globalProperties = await client.api.getDynamicGlobalProperties();
+	let globalProperties = await client.database.getDynamicGlobalProperties();//★
 	console.log(globalProperties);
 	let total_vesting_shares = parseFloat(globalProperties.total_vesting_shares.replace(" VESTS", ""));
 	let total_vesting_fund_steem = parseFloat(globalProperties.total_vesting_fund_steem.replace(" STEEM", ""));
@@ -780,7 +780,7 @@ let krwtrx;
 let krwbtc;
 let krweth;
 async function aaa(days){
-	globalProperties = await client.api.getDynamicGlobalProperties();//★
+	globalProperties = await client.database.getDynamicGlobalProperties();//★
 	krwsteem = await getPrice('KRW-STEEM');
 	krwsbd = await getPrice('KRW-SBD');
 	krwtrx = await getPrice('KRW-TRX');
