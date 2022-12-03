@@ -1,6 +1,6 @@
 require("regenerator-runtime/runtime");
 const dsteem = require('dsteem');
-let client = new dsteem.Client('https://dev.steememory.com');
+let client = new dsteem.Client('https://api.steememory.com');
 
 
 
