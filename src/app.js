@@ -18,11 +18,14 @@ function donokuraimae(date){
 	return 'たった今';
 }
 
-function vestToSteem(vest){
-	return  client.formatter.vestToSteem(
-		vest, 
-		globalProperties.total_vesting_shares, 
-		globalProperties.total_vesting_fund_steem)
+function vestToSteem(vest){//★
+
+	// return  client.formatter.vestToSteem(
+	// 	vest, 
+	// 	globalProperties.total_vesting_shares, 
+	// 	globalProperties.total_vesting_fund_steem)
+
+	return 1
 }
 	
 function ellipsis(s){
@@ -130,14 +133,18 @@ function effectivepower(username,id1, id2, id3){
 	}
 	getEffectivePower(username).then(result => {
 		document.getElementById(id1).text = 
-			client.formatter.numberWithCommas((result.sp + result.received_sp - result.delegated_sp).toFixed(0)) + " SP" ;
+			//client.formatter.numberWithCommas((result.sp + result.received_sp - result.delegated_sp).toFixed(0)) + " SP" ;//★
+			(result.sp + result.received_sp - result.delegated_sp).toFixed(0) + " SP" ;
 		document.getElementById(id2).text = 
 			'('
-			+ client.formatter.numberWithCommas((result.sp).toFixed(0))
+			//+ client.formatter.numberWithCommas((result.sp).toFixed(0))
+			+ (result.sp).toFixed(0)
 			+ ' + '
-			+ client.formatter.numberWithCommas((result.received_sp).toFixed(0))
+			//+ client.formatter.numberWithCommas((result.received_sp).toFixed(0))
+			+ (result.received_sp).toFixed(0)
 			+ ' - ' 
-			+ client.formatter.numberWithCommas((result.delegated_sp).toFixed(0))
+			//+ client.formatter.numberWithCommas((result.delegated_sp).toFixed(0))
+			+ (result.delegated_sp).toFixed(0)
 			+ ')';
 		if(id3){
 			document.getElementById(id3).max = result.sp + result.received_sp;
@@ -200,7 +207,8 @@ function steemAmountFormat(steem, sbd, sp) {
 function krwAmountFormat(steemAmount, sbdAmount, spAmount, krw_steem, krw_sbd) {
 	if(krw_steem == 0) return "";
 	return ' <a class=gray>(' 
-		+ client.formatter.numberWithCommas((steemAmount * krw_steem + sbdAmount * krw_sbd + spAmount * krw_steem).toFixed(0)) 
+		//+ client.formatter.numberWithCommas((steemAmount * krw_steem + sbdAmount * krw_sbd + spAmount * krw_steem).toFixed(0)) //★
+		+ (steemAmount * krw_steem + sbdAmount * krw_sbd + spAmount * krw_steem).toFixed(0) //★
 		+ ' won)</a>';
 }
 	
