@@ -109,7 +109,7 @@ async function getEffectivePower(username){
 	let total_vesting_shares = parseFloat(globalProperties.total_vesting_shares.replace(" VESTS", ""));
 	let total_vesting_fund_steem = parseFloat(globalProperties.total_vesting_fund_steem.replace(" STEEM", ""));
 	let k = total_vesting_fund_steem / total_vesting_shares;
-	let accounts = await client.api.getAccountsAsync([username]);
+	let accounts = await client.api.getAccounts([username]);//★
 	console.log(accounts);
 	let vesting_shares = parseFloat(accounts[0].vesting_shares.replace(" VESTS", ""));
 	let received_vesting_shares = parseFloat(accounts[0].received_vesting_shares.replace(" VESTS", ""));
@@ -242,7 +242,7 @@ async function getReputation(username){
 //27.3217
 async function getAge(username){
 	return new Promise((resolve, reject) => {
-		client.api.getAccounts([username], function(err, response) {
+		client.api.getAccounts([username], function(err, response) {//★
 			if (err) reject(err);
 			date1 = new Date(response[0].created);
 			date1.setHours(date1.getHours() + 9);
