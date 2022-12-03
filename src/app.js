@@ -927,3 +927,38 @@ window.onload = function() {
 };
 
 
+/* --------------------------------------------------------------------- */
+
+
+
+function showTooltip(e) {
+let tooltip = document.getElementById("tooltip");
+let username = e.target.getAttribute('data-username');
+	
+	
+tooltip.style.top = e.pageY + 10 + 'px';
+tooltip.style.left = e.pageX + 10 + 'px';
+let s = "<div style='background-color: white; padding: 10px; width: 300;box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;'>"
+	+ "<image src=https://steemitimages.com/u/" + username + "/avatar style='float: left; margin: 4px;'/>"
+	+ "<a style='font-size: xx-large; margin: 4px;'>" + username + "</a>"
+	+ "<br/>"
+	+ "<a id=tooltip_about style='margin: 4px;'></a>"
+	+ "<table style='background-color: white;clear: left;'>"
+	+ "<tr><td>Reputation</td><td><a id=tooltip_rep></a></td></tr>"
+	+ "<tr><td>Effective Power</td><td><a id=tooltip_ep1></a> <a id=tooltip_ep2></a></td></tr>"
+	+ "<tr><td>Voting Power</td><td><a id=tooltip_vp></a></td></tr>"
+	+ "</table>"
+	+ "</div>" 
+tooltip.innerHTML = s;
+tooltip.style.display = "block";
+reputation(username, "tooltip_rep");
+effectivepower(username, "tooltip_ep1", "tooltip_ep2");
+votingpower(username, "tooltip_vp");
+postingJsonMetadataAbout(username, "tooltip_about");
+}
+function moveTooltip(e) {
+}
+function hideTooltip(e) {
+var tooltip = document.getElementById("tooltip");
+tooltip.style.display = "none";
+}
