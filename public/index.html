@@ -1,3 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Account History</title>
+<meta charset="utf-8">
+<link rel="icon" href="favicon_getaccounthistory.ico" id="favicon">
+<link rel="stylesheet" type="text/css" href="./ah.css">
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.1.1/dist/jdenticon.min.js" 
 	integrity="sha384-l0/0sn63N3mskDgRYJZA6Mogihu0VY3CusdLMiwpJ9LFPklOARUcOiWEIGGmFELx" 
 	crossorigin="anonymous"></script> 
+</head>
+<body>
+<div id="tooltip" display="none" style="position: absolute; display: none;"></div>
+	<!--<image src="favicon_getaccounthistory.ico">-->
+	<a style="font-size: xx-large">Account History</a>
+	| <a href="./getblog.0.11.html" class=darkgray>Blog</a>
+	| <a href="javascript:clickAppLink('https://steemit.com/@')" class=darkgray>steemit</a>
+	| <a href="javascript:clickAppLink('https://steemworld.org/@')" class=darkgray>steemworld</a>
+	| <a href="javascript:clickAppLink('https://steemscan.com/account/')" class=darkgray>steemscan</a>    
+	| <br/>
+	<div class=right id=price></div>
+	<form action="javascript:clickBtn(1);">
+	<table>
+	<tr>
+	<td><canvas id=identicon width="24" height="24" data-jdenticon-value="yasu" style="margin:0px 0px -7px 0px;"></canvas></td>
+	<td>
+	<input type="text" id="username" size="20" value="" oninput="inputChange(event)">
+	<input type="button" value="表示(1日)" onclick="clickBtn(1)" />
+	<input type="button" value="(3日)" onclick="clickBtn(3)" />
+	<input type="button" value="(7日)" onclick="clickBtn(7)" />
+	<input type="button" value="(30日)" onclick="clickBtn(30)" />
+	<input type="button" value="(60日)" onclick="clickBtn(60)" />
+	</td>
+	</tr>
+	</table>
+	<a id="userlink"></a><br/>
+	<br/><b>Power</b><br/>
+	Effective Power <b><a id=effectivepowervalue></a></b>
+	<a id=effectivepowerdetail></a><br/>
+	<progress id=effectivepower></progress><br/>
+	Voting Power <b><a id=votingpowervalue></a></b><br/>
+	<progress id=votingpower max=100></progress><br/>
+	
+	<br/><b>Reputation </b><a id="reputation"></a> <b>Age </b><a id="age"></a><br/>
+		
+	<br/><b>Period</b><br/>
+	<a id="progress"></a><br/>
+		
+	<br/><b>Reward</b><br/>
+	<a id="author_reward"></a>
+	<a id="curation_reward"></a>
+	<a id="comment_benefactor_reward"></a>
+
+	<br/><b>Transfer</b><br/>
+	<a id="transfer_in"></a>
+	<a id="transfer_out"></a>
+
+	<br/><b>Power up</b><br/>
+	<a id="power_up"></a>
+	<a id="power_down"></a>
+		
+	<br/><b>Donation</b><br/>
+	<a id="donation"></a>	
+
+		<!--
+	<div style="width: 100%;"><canvas id="cvs" style="height:16px;background-color: gray;"></canvas></div>
+		-->
+	<!--<hr color="#888" />-->
+	<br/><b>History</b><br/>
+	<span id="text"></span>
+	</form>
+</body>
+</html>
