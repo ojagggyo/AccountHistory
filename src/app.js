@@ -174,10 +174,10 @@ async function getVotingPower(username) {
     //     });          
     // });
 	return new Promise((resolve, reject) => {
-		client.rc.getVPMana(username).then(vp =>
+		client.rc.getVPMana(username).then(vPMana =>
 			{
-				console.log(vp)
-				resolve(v) 
+				console.log(vPMana.percentage)
+				resolve(vPMana.percentage / 100) 
 			}
 		)		
 	});
