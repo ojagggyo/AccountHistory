@@ -1,6 +1,6 @@
 require("regenerator-runtime/runtime");
 const dsteem = require('dsteem');
-const { CleanPlugin } = require("webpack");
+//const { CleanPlugin } = require("webpack");
 let client = new dsteem.Client('https://api.steememory.com');
 
 
