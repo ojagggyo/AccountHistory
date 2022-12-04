@@ -173,6 +173,7 @@ function getVotingPower(username) {
 }
 
 function votingpower(username, id1, id2){
+	console.log("☆☆☆ function votingpower ☆☆☆☆☆");
 	if(arguments.length == 1){
 		id1 = "votingpowervalue";
 		id2 = "votingpower";
