@@ -162,18 +162,20 @@ function effectivepower(username,id1, id2, id3){
 
 	
 function getVotingPower(username) {
+	console.log("☆☆☆ function getVotingPower ☆☆☆");
     return new Promise((resolve, reject) => {
         //steem.api.getAccounts([username], function(err, response) {//★
         client.database.getAccounts([username], function(err, response) {
 		if (err) reject(err);
 		const voting_power  = response[0].voting_power + (10000 * ((new Date - new Date(response[0].last_vote_time + "Z")) / 1000) / 432000);
+		console.log(voting_power);
 		resolve(voting_power / 100);
         });          
     });
 }
 
 function votingpower(username, id1, id2){
-	console.log("☆☆☆ function votingpower ☆☆☆☆☆");
+	console.log("☆☆☆ function votingpower ☆☆☆");
 	if(arguments.length == 1){
 		id1 = "votingpowervalue";
 		id2 = "votingpower";
