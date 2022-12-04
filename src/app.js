@@ -653,7 +653,7 @@ function getPostingJsonMetadata(username) {
         // });
 		client.database.getAccounts([username]).then(res=>{
 			if (res.length == 0) reject("res.length == 0");
-			const posting_json_metadata = response[0].posting_json_metadata ;
+			const posting_json_metadata = res[0].posting_json_metadata ;
 			resolve(JSON.parse(posting_json_metadata));
 		}).catch(err=>{reject(err)})
     });
