@@ -275,11 +275,17 @@ function repLog10(str) {
 
 async function getReputation(username){
 	return new Promise((resolve, reject) => {
-		//client.api.getAccounts([username], function(err, response) {//★
-	    client.database.getAccounts([username], function(err, response) {
-		    if (err) reject(err);
-		    resolve(repLog10(response[0].reputation));
-		});
+		// client.api.getAccounts([username], function(err, response) {//★
+		//     if (err) reject(err);
+		//     resolve(repLog10(response[0].reputation));
+		// });
+		client.database.getAccounts([username])
+		.then(res => {
+			if (res.len == 0) reject(0);
+			resolve(repLog10(res[0].reputation));
+		}).catch(err => {
+			reject(err);
+		})
 	});
 }
 
