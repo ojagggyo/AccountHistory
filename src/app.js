@@ -289,12 +289,11 @@ async function getReputation(username){
 	});
 }
 
- function reputation(username, id){
+ async function reputation(username, id){
 	getReputation(username).then(result => {
 		document.getElementById(id).text = result.toFixed(3);
-	}).catch(err => {
-		console.log(err);
-	});	
+	})
+	.catch(err => {console.log(err);});	
 }
 
 // ---------- age ----------
