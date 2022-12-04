@@ -26,16 +26,15 @@ function vestToSteem(vest){//★
 	// 	globalProperties.total_vesting_fund_steem)
 
 
-	
+	let vesting = parseFloat(vest.replace(" VESTS", ""));
 	let total_vesting_shares = parseFloat(globalProperties.total_vesting_shares.replace(" VESTS", ""));
 	let total_vesting_fund_steem = parseFloat(globalProperties.total_vesting_fund_steem.replace(" STEEM", ""));
 	let k = total_vesting_fund_steem / total_vesting_shares;
-	sp = vest * k;//保持しているSP
+	sp = vesting * k;//保持しているSP
 
 	console.log(total_vesting_shares);
 	console.log(total_vesting_fund_steem);
 	console.log(k);
-	console.log(vest);
 	console.log(sp);
 
 	return sp;
