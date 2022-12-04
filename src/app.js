@@ -26,10 +26,10 @@ function vestToSteem(vest){//★
 	// 	globalProperties.total_vesting_shares, 
 	// 	globalProperties.total_vesting_fund_steem)
 	
+
+	//数値の時と、文字列（99.9 VESTS）の時がある
 	console.log("★★★");
 	console.log(vest);
-	//let vesting = parseFloat(vest.replace(" VESTS", ""));	
-
 	let vesting = 0.0;
 	if(typeof vest == 'string'){
 		console.log("文字"+vest);
@@ -42,14 +42,7 @@ function vestToSteem(vest){//★
 	let total_vesting_shares = parseFloat(globalProperties.total_vesting_shares.replace(" VESTS", ""));
 	let total_vesting_fund_steem = parseFloat(globalProperties.total_vesting_fund_steem.replace(" STEEM", ""));
 	let k = total_vesting_fund_steem / total_vesting_shares;
-	
 	let sp = vesting * k;//保持しているSP
-
-	console.log(total_vesting_shares);
-	console.log(total_vesting_fund_steem);
-	console.log(k);
-	console.log(sp);
-
 	return sp;
 }
 	
@@ -947,7 +940,8 @@ async function aaa(days){
 	return out;
 };
 
-function clickUserLink(username){
+//function clickUserLink(username){
+window.clickUserLink = async (username) => {
 	document.getElementById("username").value = username;
 	clickBtn(1);
 }
