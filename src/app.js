@@ -646,13 +646,18 @@ function userlink(){
 // ---------- ----------	
 function getPostingJsonMetadata(username) {
     return new Promise((resolve, reject) => {
-        //client.api.getAccounts([username], function(err, response) {//★
-	client.database.getAccounts([username], function(err, response) {
-		if (err) reject(err);
-		const posting_json_metadata  = response[0].posting_json_metadata ;
-		resolve(JSON.parse(posting_json_metadata));
-        });          
+    	// client.api.getAccounts([username], function(err, response) {//★
+		// if (err) reject(err);
+		// const posting_json_metadata  = response[0].posting_json_metadata ;
+		// resolve(JSON.parse(posting_json_metadata));
+        // });
+		client.database.getAccounts([username]).then(res=>{
+			if (res.length == 0) reject("res.length == 0");
+			const posting_json_metadata = response[0].posting_json_metadata ;
+			resolve(JSON.parse(posting_json_metadata));
+		}).catch(err=>{reject(err)})
     });
+
 }
  function postingJsonMetadataAbout(username, id){
 	getPostingJsonMetadata(username).then(result => {
