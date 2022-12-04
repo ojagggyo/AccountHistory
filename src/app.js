@@ -35,6 +35,7 @@ function vestToSteem(vest){//★
 	console.log(total_vesting_shares);
 	console.log(total_vesting_fund_steem);
 	console.log(k);
+	console.log(vest);
 	console.log(sp);
 
 	return sp;
