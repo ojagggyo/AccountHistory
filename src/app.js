@@ -26,8 +26,8 @@ function vestToSteem(vest){//★
 	// 	globalProperties.total_vesting_shares, 
 	// 	globalProperties.total_vesting_fund_steem)
 
-	let vesting;
-	if(typeof vest ==  'string'){
+	let vesting = 0.0;
+	if(typeof vest == 'string'){
 		console.log("文字"+vest);
 		vesting = parseFloat(vest.replace(" VESTS", ""));	
 	}else{
