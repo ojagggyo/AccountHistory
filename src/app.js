@@ -31,7 +31,7 @@ function vestToSteem(vest){//★
 		console.log("文字"+vest);
 		vesting = parseFloat(vest.replace(" VESTS", ""));	
 	}else{
-		console.log("数字+vest");
+		console.log("数字"+vest);
 		vesting = vest;
 	}
 	
