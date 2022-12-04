@@ -173,7 +173,9 @@ function getVotingPower(username) {
 	// 		resolve(voting_power / 100);
     //     });          
     // });
-	return client.rc.getVPMana(username);
+	const vp = client.rc.getVPMana(username);
+	console.log(vp);
+	return vp;
 }
 
 function votingpower(username, id1, id2){
