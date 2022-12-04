@@ -24,8 +24,12 @@ function vestToSteem(vest){//★
 	// 	vest, 
 	// 	globalProperties.total_vesting_shares, 
 	// 	globalProperties.total_vesting_fund_steem)
-
-	return 1
+	
+	let total_vesting_shares = parseFloat(globalProperties.total_vesting_shares.replace(" VESTS", ""));
+	let total_vesting_fund_steem = parseFloat(globalProperties.total_vesting_fund_steem.replace(" STEEM", ""));
+	let k = total_vesting_fund_steem / total_vesting_shares;
+	sp = vest * k;//保持しているSP
+	return sp;
 }
 	
 function ellipsis(s){
@@ -235,7 +239,7 @@ function repLog10(str) {
 async function getReputation(username){
 	return new Promise((resolve, reject) => {
 		//client.api.getAccounts([username], function(err, response) {//★
-	        client.database.getAccounts([username], function(err, response) {
+	    client.database.getAccounts([username], function(err, response) {
 		    if (err) reject(err);
 		    resolve(repLog10(response[0].reputation));
 		});
@@ -255,7 +259,7 @@ async function getReputation(username){
 async function getAge(username){
 	return new Promise((resolve, reject) => {
 		//client.api.getAccounts([username], function(err, response) {//★
-                client.database.getAccounts([username], function(err, response) {
+        client.database.getAccounts([username], function(err, response) {
 			
 			if (err) reject(err);
 			date1 = new Date(response[0].created);
@@ -316,13 +320,7 @@ function getReward(record){
 		return false;
 	}
 	
-	/* 不要？
-	//vest Steem変換
-	total_sp_payout[op] = window.steem.formatter.vestToSteem(
-			total_vesting_payout[op], 
-			globalProperties.total_vesting_shares, 
-			globalProperties.total_vesting_fund_steem)
-	*/
+
 	
 	if(total_count[op] === void 0){
 		total_count[op] = 1;
@@ -361,14 +359,7 @@ function getReward_donation(record){
 		return false;
 	}
 	
-	/* 不要？
-	//vest Steem変換
-	total_donation_sp[op] = window.steem.formatter.vestToSteem(
-			total_donation_vesting[op], 
-			globalProperties.total_vesting_shares, 
-			globalProperties.total_vesting_fund_steem)
-	*/
-	
+
 	if(total_donation_count[op] === void 0){
 		total_donation_count[op] = 1;
 		total_donation_sbd[op] = sbd;
@@ -391,14 +382,10 @@ let total_powerupdown_steem = {};
 let total_powerupdown_vesting = {};
 let total_powerupdown_sp = {};
 function getReward_powerupdown(record){
-	//const username = document.getElementById("username").value
-	//let sbd = 0;
+
 	let steem = 0;
 	let vesting = 0;
 	let op = record[1].op[0];
-	//if(op == "withdraw_vesting"){//Power up
-	//	op = "power_up";
-	//	vesting = parseFloat(record[1].op[1].vesting_shares);
 	if(op == "transfer_to_vesting"){//Power up
 		op = "power_up";
 		steem = parseFloat(record[1].op[1].amount);
@@ -914,9 +901,6 @@ async function aaa(days){
 			
 			let timestamp = new Date(ret[i][1].timestamp + "z");
 
-			
-			//let timestamp = new Date(ret[i][1].timestamp);
-			//timestamp.setHours(timestamp.getHours() + 9);
 			
 			let termDay = (now - timestamp) / 86400000;
 
