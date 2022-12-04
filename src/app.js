@@ -166,10 +166,12 @@ function getVotingPower(username) {
     return new Promise((resolve, reject) => {
         //steem.api.getAccounts([username], function(err, response) {//★
         client.database.getAccounts([username], function(err, response) {
-		if (err) reject(err);
-		const voting_power  = response[0].voting_power + (10000 * ((new Date - new Date(response[0].last_vote_time + "Z")) / 1000) / 432000);
-		console.log(voting_power);
-		resolve(voting_power / 100);
+			console.log(err);
+			console.log(response);
+			if (err) reject(err);
+			const voting_power  = response[0].voting_power + (10000 * ((new Date - new Date(response[0].last_vote_time + "Z")) / 1000) / 432000);
+			console.log(voting_power);
+			resolve(voting_power / 100);
         });          
     });
 }
