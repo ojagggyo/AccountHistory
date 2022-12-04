@@ -986,10 +986,10 @@ window.onload = function() {
 
 
 
-function showTooltip(e) {
+//function showTooltip(e) {
+window.showTooltip = async (e) => {
 let tooltip = document.getElementById("tooltip");
 let username = e.target.getAttribute('data-username');
-	
 	
 tooltip.style.top = e.pageY + 10 + 'px';
 tooltip.style.left = e.pageX + 10 + 'px';
@@ -1013,7 +1013,8 @@ postingJsonMetadataAbout(username, "tooltip_about");
 }
 function moveTooltip(e) {
 }
-function hideTooltip(e) {
+//function hideTooltip(e) {
+window.hideTooltip = async (e) => {
 var tooltip = document.getElementById("tooltip");
 tooltip.style.display = "none";
 }
