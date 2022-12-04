@@ -26,12 +26,13 @@ function vestToSteem(vest){//★
 	// 	globalProperties.total_vesting_shares, 
 	// 	globalProperties.total_vesting_fund_steem)
 
-	let vesting = vest;
+	let vesting;
 	if(typeof (vest) == string){
 		console.log("文字"+vest);
 		vesting = parseFloat(vest.replace(" VESTS", ""));	
 	}else{
 		console.log("数字+vest");
+		vesting = vest;
 	}
 	
 	let total_vesting_shares = parseFloat(globalProperties.total_vesting_shares.replace(" VESTS", ""));
