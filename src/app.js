@@ -300,21 +300,32 @@ async function getReputation(username){
 //27.3217
 async function getAge(username){
 	return new Promise((resolve, reject) => {
-		//client.api.getAccounts([username], function(err, response) {//★
-        client.database.getAccounts([username], function(err, response) {
+		// client.api.getAccounts([username], function(err, response) {//★
 			
-			if (err) reject(err);
+		// 	if (err) reject(err);
+		// 	date1 = new Date(response[0].created);
+		// 	date1.setHours(date1.getHours() + 9);
+		// 	var now = new Date();
+		// 	sa = now - date1;
+			
+		// 	resolve({
+		// 		moons: sa / 86400000 / 27.3217,//月の公転周期 27.3217日
+		// 		days: sa / 86400000, 
+		// 		earths: sa / 86400000 / 365.242//地球の公転周期365.242日
+		// 	});
+		// });
+		client.database.getAccounts([username]).then(res =>{
+			if (res.length == 0) reject("res.length == 0");
 			date1 = new Date(response[0].created);
 			date1.setHours(date1.getHours() + 9);
 			var now = new Date();
 			sa = now - date1;
-			
 			resolve({
 				moons: sa / 86400000 / 27.3217,//月の公転周期 27.3217日
 				days: sa / 86400000, 
 				earths: sa / 86400000 / 365.242//地球の公転周期365.242日
 			});
-		});
+		}).catch(err=>{reject(err)})
 	});
 }
 
