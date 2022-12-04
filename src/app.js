@@ -161,9 +161,9 @@ function effectivepower(username,id1, id2, id3){
 
 
 	
-function getVotingPower(username) {
+async function getVotingPower(username) {
 	console.log("☆☆☆ function getVotingPower ☆☆☆");
-    // return new Promise((resolve, reject) => {
+    // 
     //     steem.api.getAccounts([username], function(err, response) {//★
 	// 		console.log(err);
 	// 		console.log(response);
@@ -173,9 +173,14 @@ function getVotingPower(username) {
 	// 		resolve(voting_power / 100);
     //     });          
     // });
-	const vp = client.rc.getVPMana(username);
-	console.log(vp);
-	return vp;
+	return new Promise((resolve, reject) => {
+		client.rc.getVPMana(username).then(vp =>
+			{
+				console.log(vp)
+				resolve(v) 
+			}
+		)		
+	});
 }
 
 function votingpower(username, id1, id2){
