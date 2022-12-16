@@ -592,15 +592,16 @@ window.clickBtn = async (days) => {
 	});
 }
 
-function inputChange(event){
+//function inputChange(event){
+window.inputChange = async (event) => {	
     jdenticon.update("#identicon", document.getElementById("username").value);
 }
 
 /* ---------------------------------------------------------------------- */
 
-    window.jdenticon_config = {
-        replaceMode: "observe"
-    };
+window.jdenticon_config = {
+	replaceMode: "observe"
+};
 
 
 
