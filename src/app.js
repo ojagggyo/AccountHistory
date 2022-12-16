@@ -1,22 +1,24 @@
 require("regenerator-runtime/runtime");
 const dsteem = require('dsteem');
-//const { CleanPlugin } = require("webpack");
 let client = new dsteem.Client('https://api.steememory.com');
-
-
-
-
 
 function donokuraimae(date){
 	date1 = new Date(date);
 	date1.setHours(date1.getHours() + 9);
 	var now = new Date();
 	sa = now - date1;
-	if(sa >= 86400000){return Math.floor(sa / 86400000)+'日前';}
-	if(sa >= 3600000){return Math.floor(sa / 3600000)+'時間前';}
-	if(sa >= 60000){return Math.floor(sa / 60000)+'分前';}
-	if(sa >= 1000){return Math.floor(sa / 1000)+'秒前';}
-	return 'たった今';
+	// if(sa >= 86400000){return Math.floor(sa / 86400000)+'日前';}
+	// if(sa >= 3600000){return Math.floor(sa / 3600000)+'時間前';}
+	// if(sa >= 60000){return Math.floor(sa / 60000)+'分前';}
+	// if(sa >= 1000){return Math.floor(sa / 1000)+'秒前';}
+	// return 'たった今';
+
+	if(sa >= 2360591558*2){return Math.floor(sa / 2360591558)+' moons ago';}//27.32166155*3600*24
+	if(sa >= 86400000*2){return Math.floor(sa / 86400000)+' days ago';}
+	if(sa >= 3600000*2){return Math.floor(sa / 3600000)+' hours ago';}
+	if(sa >= 60000*2){return Math.floor(sa / 60000)+' minutes ago';}
+	if(sa >= 1000*2){return Math.floor(sa / 1000)+' seconds ago';}
+	return 'just now';
 }
 
 function vestToSteem(vest){//★
@@ -598,10 +600,6 @@ window.inputChange = async (event) => {
 }
 
 /* ---------------------------------------------------------------------- */
-
-window.jdenticon_config = {
-	replaceMode: "observe"
-};
 
 
 
