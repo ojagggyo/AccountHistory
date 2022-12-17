@@ -7,8 +7,8 @@ function donokuraimae(date){
 	date1.setHours(date1.getHours() + 9);
 	var now = new Date();
 	sa = now - date1;
-	if(sa >= 13148718804*2){return Math.floor(sa / 13148718804)+' earths ago';}//365.242189*3600*24
-	if(sa >= 2360591558*2){return Math.floor(sa / 2360591558)+' moons ago';}//27.32166155*3600*24
+	if(sa >= 31556925130*2){return Math.floor(sa / 31556925130)+' earths ago';}//365.242189*3600*24*1000
+	if(sa >= 2360591558*2){return Math.floor(sa / 2360591558)+' moons ago';}//27.32166155*3600*24*1000
 	if(sa >= 86400000*2){return Math.floor(sa / 86400000)+' days ago';}
 	if(sa >= 3600000*2){return Math.floor(sa / 3600000)+' hours ago';}
 	if(sa >= 60000*2){return Math.floor(sa / 60000)+' minutes ago';}
