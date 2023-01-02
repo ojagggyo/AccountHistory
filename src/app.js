@@ -49,16 +49,6 @@ function ellipsis(s){
 
 function getUserName(){
 
-	let url = new URL(window.location.href);
-	let params = url.searchParams;
-	let api = params.get('api');
-	console.log(api);
-	if(api){
-		console.log(api);
-		client = null;
-		client = new dsteem.Client(api);
-	}
-
   let hash = window.location.hash;// #username
   if (hash == null || hash.trim().length == 0){
 	  return "";
@@ -537,6 +527,12 @@ function getTransferAmount(record){
 
 // ---------- ----------
 
+//2023.1.2
+// function changespan() {
+// 	clickBtn(span);
+// }
+
+
 //function clickBtn(days){
 window.clickBtn = async (days) => {
 	
@@ -609,7 +605,7 @@ function setUsername(username){
         nameList.splice(index, 1);  
     }
     nameList.push(username);
-    document.cookie = "usernames=" + encodeURIComponent(nameList.join(",")) + ";max-age=86400";//60*60*24秒   
+    document.cookie = "usernames=" + encodeURIComponent(nameList.join(",")) + ";max-age=3600";//60*60秒   
 }
     
 function getUsernames(){
@@ -986,13 +982,32 @@ function clickAppLink(appname){
 
 window.onload = function() {
 	let username = getUserName();
-
 	if(username == ''){
 		let userList = getUsernames();
 		if(userList.length == 0) return;
 		username = userList.pop();
 	}
 	document.getElementById("username").value = username;
+
+	let url = new URL(window.location.href);
+	let params = url.searchParams;
+	let api = params.get('api');
+	console.log(api);
+	if(api){
+		console.log(api);
+		client = null;
+		client = new dsteem.Client(api);
+	}
+
+	//2023.1.2 
+	let span = params.get('span');
+	console.log(span);
+	if(span){
+		console.log(span);
+		clickBtn(span);
+		return;
+	}
+
 	clickBtn(1);
 };
 
