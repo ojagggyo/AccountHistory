@@ -25,14 +25,14 @@ function vestToSteem(vest){//★
 	
 
 	//数値の時と、文字列（99.9 VESTS）の時がある
-	console.log("★★★");
-	console.log(vest);
+	//console.log("★★★");
+	//console.log(vest);
 	let vesting = 0.0;
 	if(typeof vest == 'string'){
-		console.log("文字"+vest);
+		//console.log("文字"+vest);
 		vesting = parseFloat(vest.replace(" VESTS", ""));	
 	}else{
-		console.log("数字"+vest);
+		//console.log("数字"+vest);
 		vesting = vest;
 	}
 	
