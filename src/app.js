@@ -237,7 +237,7 @@ function krwAmountFormat(steemAmount, sbdAmount, spAmount, krw_steem, krw_sbd) {
 	return ' <a class=gray>(' 
 		//+ client.formatter.numberWithCommas((steemAmount * krw_steem + sbdAmount * krw_sbd + spAmount * krw_steem).toFixed(0)) //★
 		+ (steemAmount * krw_steem + sbdAmount * krw_sbd + spAmount * krw_steem).toFixed(0) //★
-		+ ' krw)</a>';
+		+ ' KRW)</a>';
 }
 	
 //reputation
@@ -842,11 +842,11 @@ async function aaa(days){
 	krwbtc = await getPrice('KRW-BTC');
 	krweth = await getPrice('KRW-ETH');
 	document.getElementById('price').innerHTML = 
-		'<a class=right>STEEM ' + (krwsteem == 0 ? "---" : krwsteem) + ' krw</a>' 
-		+ '<br/><a class=right>SBD ' + (krwsbd == 0 ? "---" : krwsbd) + ' krw</a>'
-		+ '<br/><a class="right gray">TRX ' + (krwtrx == 0 ? "---" : krwtrx) + ' krw</a>'
-		+ '<br/><a class="right gray">BTC ' + (krwbtc == 0 ? "---" : krwbtc/1000000) + 'M krw</a>'
-		+ '<br/><a class="right gray">ETH ' + (krweth == 0 ? "---" : krweth/1000000) + 'M krw</a>';
+		'<a class=right>STEEM ' + (krwsteem == 0 ? "---" : krwsteem) + ' KRW</a>' 
+		+ '<br/><a class=right>SBD ' + (krwsbd == 0 ? "---" : krwsbd) + ' KRW</a>'
+		+ '<br/><a class="right gray">TRX ' + (krwtrx == 0 ? "---" : krwtrx) + ' KRW</a>'
+		+ '<br/><a class="right gray">BTC ' + (krwbtc == 0 ? "---" : krwbtc/1000000) + 'M KRW/a>'
+		+ '<br/><a class="right gray">ETH ' + (krweth == 0 ? "---" : krweth/1000000) + 'M KRW</a>';
 	//
 	let username = document.getElementById("username").value;
 	effectivepower(username);
