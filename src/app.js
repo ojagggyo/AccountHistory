@@ -845,7 +845,7 @@ async function aaa(days){
 		'<a class=right>STEEM ' + (krwsteem == 0 ? "---" : krwsteem) + ' KRW</a>' 
 		+ '<br/><a class=right>SBD ' + (krwsbd == 0 ? "---" : krwsbd) + ' KRW</a>'
 		+ '<br/><a class="right gray">TRX ' + (krwtrx == 0 ? "---" : krwtrx) + ' KRW</a>'
-		+ '<br/><a class="right gray">BTC ' + (krwbtc == 0 ? "---" : krwbtc/1000000) + 'M KRW/a>'
+		+ '<br/><a class="right gray">BTC ' + (krwbtc == 0 ? "---" : krwbtc/1000000) + 'M KRW</a>'
 		+ '<br/><a class="right gray">ETH ' + (krweth == 0 ? "---" : krweth/1000000) + 'M KRW</a>';
 	//
 	let username = document.getElementById("username").value;
